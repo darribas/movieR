@@ -1,0 +1,65 @@
+#############################
+# movieR: movies about data #
+#############################
+
+This program takes a csv file of data arranged in the following way:
+
+	* Rows correspond to observations
+	* Columns correspond to different years chronologically ordered
+	* Missing values are represented by empty cells
+
+It outputs a video in the open format .vob that displays the evolution of the distribution of the data over time. To do it, it draws sequential density kernels for each years and smoothes out the transition.
+
+### Dependencies
+To run movieR effectively, you will need:
+
+	* R <http://www.r-project.org/>
+	* The R library 'PBSmodelling' <http://cran.r-project.org/web/packages/PBSmodelling/index.html>
+	* The free package dvd-slideshow <http://dvd-slideshow.sourceforge.net/wiki/Main_Page>
+
+### Usage
+In order to use movieR, follow these steps. We will assume you have your data ('data.csv') and the file 'movieR.r' file in the working directory. To change the working directory in R, use the command 'setwd'. We will also assume you want the output to be put into the same current directory.
+
+First, source movieR:
+	
+	> source('movieR.r')
+
+Then, just call the function:
+
+	> movieR('data.csv', './')
+
+This command will create (it may take some time) a .vob file that you may view, for instance, with VLC, as well as other auxiliary files you can delete if you wish when done.
+
+### Parameters
+The function 'movieR' takes the following parameters:
+
+	* 'csv_path': path to the input data
+	* 'output_folder': path to the output folder where the movie and auxiliary file will be put
+	* 'header': switch to indicate if the csv contains a header. Defaults to TRUE
+	* 'na.rm': switch to remove missing values to compute the density kernels. Defaults to TRUE
+	* 'cycles': number of intermediate shots to be taken between to periods to smooth the transition. Defaults to 10
+	* 'lapse': duration in the movie for each shot. Defaults to 0.25 seconds
+
+### Example data
+-The example data in this folder were taken from the OECD website <http://stats.oecd.org>
+
+-Metropolitan Regions, © OECD, 2010 <http://stats.oecd.org/OECDStat_Metadata/ShowMetadata.ashx?Dataset=METRO&Lang=en&> 
+
+Such data produce a movie that may be seen on this url: <http://vimeo.com/16203102>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
